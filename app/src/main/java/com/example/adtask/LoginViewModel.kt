@@ -17,10 +17,9 @@ class LoginViewModel : ViewModel() {
         for (i in 0 until taskList.size) {
              if (taskList[i].email == username.toString()) {
                  found=true
-                if (taskList[i].password == password.toString()) {
-                } else {
-                    foundPass=true
-                }
+                 if (taskList[i].password != password.toString()) {
+                     foundPass=true
+                 }
             }
         }
         response = if (found){

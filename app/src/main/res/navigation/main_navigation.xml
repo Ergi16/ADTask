@@ -10,8 +10,18 @@
         android:name="com.example.adtask.MainFragment"
         tools:layout="@layout/fragment_main"
         android:label="MainActivity" >
+
         <action
             android:id="@+id/action_loginActivity_to_mainActivity2"
             app:destination="@id/mainActivity" />
+        <action
+            android:id="@+id/action_mainActivity_to_fragmentPayPal"
+            app:destination="@id/payPalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/payPalFragment"
+        android:name="com.example.adtask.PayPalFragment"
+        tools:layout="@layout/fragment_pay_pal"
+        android:label="MainActivity" >
     </fragment>
 </navigation>
