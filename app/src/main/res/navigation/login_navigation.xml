@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent_navigation"
+    app:startDestination="@id/loginActivity">
+
+    <fragment
+        android:id="@+id/loginActivity"
+        android:name="com.example.adtask.LogInFragment"
+        tools:layout="@layout/fragment_log_in"
+        android:label="LoginActivity" >
+        <action
+            android:id="@+id/action_loginActivity_to_mainActivity2"
+            app:destination="@id/mainActivity" />
+        <action
+            android:id="@+id/action_loginActivity_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.adtask.MainActivity"
+        tools:layout="@layout/activity_main"
+        android:label="MainActivity" />
+        <fragment
+            android:id="@+id/signUpFragment"
+            android:name="com.example.adtask.SignUpFragment"
+            android:label="SignUpFragment"
+            tools:layout="@layout/fragment_sign_up" />
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginActivity" />
+</navigation>

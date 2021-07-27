@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent_navigation"
+    app:startDestination="@id/loginActivity">
+
+    <fragment
+        android:id="@+id/loginActivity"
+        android:name="com.example.adtask.MainFragment"
+        tools:layout="@layout/fragment_main"
+        android:label="MainActivity" >
+        <action
+            android:id="@+id/action_loginActivity_to_mainActivity2"
+            app:destination="@id/mainActivity" />
+    </fragment>
+</navigation>
