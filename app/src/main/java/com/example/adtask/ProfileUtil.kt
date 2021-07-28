@@ -18,6 +18,8 @@ public class  ProfileUtil(context: Context) {
             val serializedUser = sharedPreferences.getString(Constants.USERLIST, "")
             return Gson().fromJson(serializedUser, ListOfUsers::class.java) ?: return null
         }
+    val username: String?
+        get() = sharedPreferences.getString(Constants.USERNAME, "")
 
 
     fun saveUser(user:ListOfUsers?) {
@@ -31,7 +33,12 @@ public class  ProfileUtil(context: Context) {
         editor?.putString(Constants.USERLIST, Gson().toJson(user))
         editor?.apply()
     }
-
+    fun saveUsername(username: String?) {
+        editor = sharedPreferences.edit()
+        editor?.putString(Constants.USERNAME, username)
+        editor?.apply()
+        editor?.commit()
+    }
     companion object {
         private var profileUtilInstance: ProfileUtil? = null
         val instance: ProfileUtil?

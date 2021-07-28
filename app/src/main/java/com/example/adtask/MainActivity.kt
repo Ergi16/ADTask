@@ -1,24 +1,27 @@
 package com.example.adtask
 
-import android.content.SharedPreferences
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
-import android.view.MenuItem
-import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
+import android.view.Window
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import com.google.android.material.navigation.NavigationView
+import androidx.navigation.navArgs
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlin.collections.ArrayList
 
 
-class MainActivity : AppCompatActivity()  {
+class MainActivity : AppCompatActivity() {
 
-    var currentUsers : ArrayList<User>? = null
+
+    var currentUsers: ArrayList<User>? = null
+
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportActionBar?.hide()
+        actionBar?.hide()
+        this.window.statusBarColor = Color.BLACK
 
     }
 

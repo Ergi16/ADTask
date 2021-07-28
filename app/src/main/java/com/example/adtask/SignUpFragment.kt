@@ -34,24 +34,28 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         currentUsers = ProfileUtil.instance?.user
         taskList = currentUsers as ListOfUsers
-        btn_sign_up.setOnClickListener {
-            if (loginViewModel.doSignUp(taskList,username.text.toString(),password.text.toString())==-1){
+        btnSignUp.setOnClickListener {
+            if (loginViewModel.doSignUp(taskList,inputEmail.text.toString(),inputPassword.text.toString())==-1){
                 Toast.makeText(context,"This user does exist...", Toast.LENGTH_SHORT).show()
-            }else if(loginViewModel.doSignUp(taskList,username.text.toString(),password.text.toString())==0){
+            }else if(loginViewModel.doSignUp(taskList,inputEmail.text.toString(),inputPassword.text.toString())==0){
                 Toast.makeText(context,"Your email input should be validated...",Toast.LENGTH_SHORT).show()
-            }else if(loginViewModel.doSignUp(taskList,username.text.toString(),password.text.toString())==1){
+            }else if(loginViewModel.doSignUp(taskList,inputEmail.text.toString(),inputPassword.text.toString())==1){
                 Toast.makeText(context,"Your password input should be at least 6 characters...",Toast.LENGTH_SHORT).show()
             }else{
-                val data = User(username.text.toString(), password.text.toString())
+                val data = User(inputEmail.text.toString(), inputPassword.text.toString())
                 saveData(data)
                 val action =
                     SignUpFragmentDirections
                         .actionSignUpFragmentToLoginFragment()
                 view.findNavController().navigate(action)
             }
-
-
-
+            
+        }
+        goToLogin.setOnClickListener{
+            val action =
+                SignUpFragmentDirections
+                    .actionSignUpFragmentToLoginFragment()
+            view.findNavController().navigate(action)
         }
     }
 

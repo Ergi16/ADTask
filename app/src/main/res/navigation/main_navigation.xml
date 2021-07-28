@@ -12,16 +12,42 @@
         android:label="MainActivity" >
 
         <action
-            android:id="@+id/action_loginActivity_to_mainActivity2"
-            app:destination="@id/mainActivity" />
-        <action
             android:id="@+id/action_mainActivity_to_fragmentPayPal"
             app:destination="@id/payPalFragment" />
+        <action
+            android:id="@+id/action_mainActivity_to_fragmentSettings"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_mainActivity_to_fragmentAccountInfo"
+            app:destination="@id/accountFragment" />
     </fragment>
     <fragment
         android:id="@+id/payPalFragment"
         android:name="com.example.adtask.PayPalFragment"
         tools:layout="@layout/fragment_pay_pal"
         android:label="MainActivity" >
+        <action
+            android:id="@+id/action_payPal_to_main"
+            app:destination="@id/loginActivity" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.adtask.SettingsFragment"
+        tools:layout="@layout/fragment_settings"
+        android:label="MainActivity" >
+        <action
+            android:id="@+id/action_settings_to_main"
+            app:destination="@id/loginActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.example.adtask.AccountFragment"
+        tools:layout="@layout/fragment_account"
+        android:label="MainActivity" >
+        <action
+            android:id="@+id/action_account_to_main"
+            app:destination="@id/loginActivity" />
     </fragment>
 </navigation>

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -40,21 +41,19 @@ class LogInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         currentUsers = ProfileUtil.instance?.user
         taskList = currentUsers as ListOfUsers
-        btn_login?.setOnClickListener {
-            if (loginViewModel.doLogin(taskList,username.text.toString(),password.text.toString())==0){
+        btnLogin?.setOnClickListener {
+            if (loginViewModel.doLogin(taskList,inputEmail.text.toString(),inputPassword.text.toString())==0){
                 Toast.makeText(context,"Your password was incorrect",Toast.LENGTH_SHORT).show()
-            }else if(loginViewModel.doLogin(taskList,username.text.toString(),password.text.toString())==1){
+            }else if(loginViewModel.doLogin(taskList,inputEmail.text.toString(),inputPassword.text.toString())==1){
                 Toast.makeText(context,"You have to register first",Toast.LENGTH_SHORT).show()
             }else{
-                val action =
-                    LogInFragmentDirections
-                        .actionLoginActivityToMainActivity2()
-                view.findNavController().navigate(action)
+                ProfileUtil.instance?.saveUsername(inputEmail.text.toString())
+                view?.findNavController()?.navigate(R.id.action_loginActivity_to_mainActivity2)
             }
            /* val data = User(username.text.toString(), password.text.toString())
             saveData(data)*/
         }
-        btn_sign_up.setOnClickListener {
+        gotoRegister.setOnClickListener {
             val action =
                 LogInFragmentDirections
                     .actionLoginActivityToSignUpFragment()
