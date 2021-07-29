@@ -33,7 +33,9 @@ class SignUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         currentUsers = ProfileUtil.instance?.user
-        taskList = currentUsers as ListOfUsers
+        if(currentUsers!=null){
+            taskList = currentUsers as ListOfUsers
+        }
         btnSignUp.setOnClickListener {
             if (loginViewModel.doSignUp(taskList,inputEmail.text.toString(),inputPassword.text.toString())==-1){
                 Toast.makeText(context,"This user does exist...", Toast.LENGTH_SHORT).show()

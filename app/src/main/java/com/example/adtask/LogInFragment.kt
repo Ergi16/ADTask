@@ -40,7 +40,10 @@ class LogInFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         currentUsers = ProfileUtil.instance?.user
-        taskList = currentUsers as ListOfUsers
+        if(currentUsers!=null){
+            taskList = currentUsers as ListOfUsers
+        }
+
         btnLogin?.setOnClickListener {
             if (loginViewModel.doLogin(taskList,inputEmail.text.toString(),inputPassword.text.toString())==0){
                 Toast.makeText(context,"Your password was incorrect",Toast.LENGTH_SHORT).show()
